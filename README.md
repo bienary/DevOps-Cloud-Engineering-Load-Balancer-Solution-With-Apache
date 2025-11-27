@@ -6,4 +6,5 @@ The load balancer evaluates server health and workload, then routes client reque
 
 This guide provides a step-by-step approach to deploying and configuring an Apache Load Balancer to enhance the scalability and reliability of the Tooling Website solution 🚀.
 
-<img width="782" height="531" alt="image" src="https://github.com/user-attachments/assets/5bcdfd18-cb00-498c-bf58-64dd3f8ea4ce" />
+<img width="856" height="531" alt="image" src="https://github.com/user-attachments/assets/bf7cfd20-8f7f-4e7c-9c60-b0ac5f714852" />
+
