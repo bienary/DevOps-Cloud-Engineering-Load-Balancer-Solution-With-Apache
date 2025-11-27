@@ -25,3 +25,37 @@ Make sure that you have the following servers installed and configured:
 - Open TCP port 80 on `Project-8-apache-lb` by creating an Inbound Rule in Security Group.
 
 - Install Apache Load Balancer on `Project-8-apache-lb` server and configure it to point traffic coming to LB to both Web Servers:
+
+## Install Apache and its dependencies:
+
+```
+sudo apt update && sudo apt upgrade -y
+
+sudo apt install apache2 -y
+
+sudo apt-get install libxml2-de
+```
+
+## Enable the following Modules:
+
+```
+sudo a2enmod rewrite
+
+sudo a2enmod proxy
+
+sudo a2enmod proxy_balancer
+
+sudo a2enmod proxy_http
+
+sudo a2enmod headers
+
+sudo a2enmod lbmethod_bytraffic
+```
+## Restart apache2 service:
+
+```
+sudo systemctl restart apache2
+
+sudo systemctl status apache2
+```
+
