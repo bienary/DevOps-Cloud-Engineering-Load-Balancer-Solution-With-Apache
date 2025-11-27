@@ -59,3 +59,26 @@ sudo systemctl restart apache2
 sudo systemctl status apache2
 ```
 
+## Configure Load Balancing
+
+### Edit the Apache configuration file:
+
+```
+sudo vi /etc/apache2/sites-available/000-default.conf
+```
+
+- Add this configuration into this section `<VirtualHost *:80>  </VirtualHost>`
+
+```
+<Proxy "balancer://mycluster">
+    BalancerMember http://<WebServer1-Private-IP-Address>:80 loadfactor=5 timeout=1
+    BalancerMember http://<WebServer1-Private-IP-Address>:80 loadfactor=5 timeout=1
+    ProxySet lbmethod=bytraffic
+    # ProxySet lbmethod=byrequests
+</Proxy>
+
+ProxyPreserveHost on
+ProxyPass / balancer://mycluster/
+ProxyPassReverse / balancer://mycluster/
+```
+
