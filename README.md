@@ -9,3 +9,19 @@ This guide provides a step-by-step approach to deploying and configuring an Apac
 <img width="965" height="558" alt="image" src="https://github.com/user-attachments/assets/5e84f9a5-b86f-4e03-bc94-2988ea159015" />
 
 
+## Prerequisites
+Make sure that you have the following servers installed and configured:
+
+- Two RHEL9 Web Servers
+- One MySQL DB Server (based on Ubuntu 24.04)
+- One RHEL9 NFS server
+
+<img width="977" height="471" alt="image" src="https://github.com/user-attachments/assets/06036db1-5dc2-4e27-b2de-101e651467c8" />
+
+
+## Configure Apache As A Load Balancer
+- Create an Ubuntu Server EC2 instance and name it `Project-8-apache-lb`
+
+- Open TCP port 80 on `Project-8-apache-lb` by creating an Inbound Rule in Security Group.
+
+- Install Apache Load Balancer on `Project-8-apache-lb` server and configure it to point traffic coming to LB to both Web Servers:
