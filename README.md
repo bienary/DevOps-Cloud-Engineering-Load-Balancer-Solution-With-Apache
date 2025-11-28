@@ -1,4 +1,4 @@
-# Load Balancer solution using Apache
+# ⚖️ Load Balancer solution using Apache
 
 Load balancing is an architectural strategy that distributes incoming application or website traffic across multiple backend servers to ensure high availability, scalability, and fault tolerance ⚙️. Instead of relying on a single server, a load-balanced environment uses a dedicated component—called a load balancer—as the unified entry point for users 🎯.
 
