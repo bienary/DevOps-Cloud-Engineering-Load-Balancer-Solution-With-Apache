@@ -103,6 +103,7 @@ sudo systemctl restart apache2
 ```
 http://<Load-Balancer-Public-IP-Address-or-Public-DNS-Name>/index.php
 ```
+<img width="1317" height="544" alt="image" src="https://github.com/user-attachments/assets/2a04d4af-bb75-4ee3-9662-8cf77cbaba77" />
 
 - Open two SSH sessions—one for each Web Server—and unmount /var/log/httpd/ on both servers (if it is currently mounted).
 
