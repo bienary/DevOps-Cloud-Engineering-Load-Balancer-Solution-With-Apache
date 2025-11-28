@@ -22,6 +22,9 @@ Make sure that you have the following servers installed and configured:
 ## Step 1: Configure Apache As A Load Balancer
 - Create an Ubuntu Server EC2 instance and name it `Project-8-apache-lb`
 
+<img width="1159" height="307" alt="image" src="https://github.com/user-attachments/assets/9d5cf678-c97f-4130-85c4-223375710c63" />
+
+
 - Open TCP port 80 on `Project-8-apache-lb` by creating an Inbound Rule in Security Group.
 
 - Install Apache Load Balancer on `Project-8-apache-lb` server and configure it to point traffic coming to LB to both Web Servers:
@@ -59,6 +62,9 @@ sudo systemctl restart apache2
 sudo systemctl status apache2
 ```
 
+<img width="1315" height="732" alt="image" src="https://github.com/user-attachments/assets/7ad7110e-f550-465c-806b-79b1fc7a587e" />
+
+
 ## Configure Load Balancing
 
 ### Edit the Apache configuration file:
@@ -81,6 +87,8 @@ ProxyPreserveHost on
 ProxyPass / balancer://mycluster/
 ProxyPassReverse / balancer://mycluster/
 ```
+
+<img width="1315" height="732" alt="image" src="https://github.com/user-attachments/assets/e287b12f-53b3-4d04-9dec-64dcfb86ce54" />
 
 > This setup uses the by-traffic load-balancing approach, where incoming requests are routed to web servers based on how busy they currently are. The loadfactor setting defines the share of traffic each server should receive.
 
