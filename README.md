@@ -19,7 +19,7 @@ Make sure that you have the following servers installed and configured:
 <img width="977" height="471" alt="image" src="https://github.com/user-attachments/assets/06036db1-5dc2-4e27-b2de-101e651467c8" />
 
 
-## Configure Apache As A Load Balancer
+## Step 1: Configure Apache As A Load Balancer
 - Create an Ubuntu Server EC2 instance and name it `Project-8-apache-lb`
 
 - Open TCP port 80 on `Project-8-apache-lb` by creating an Inbound Rule in Security Group.
@@ -82,3 +82,79 @@ ProxyPass / balancer://mycluster/
 ProxyPassReverse / balancer://mycluster/
 ```
 
+> This setup uses the by-traffic load-balancing approach, where incoming requests are routed to web servers based on how busy they currently are. The loadfactor setting defines the share of traffic each server should receive.
+
+- Restart the Apache server:
+
+```
+sudo systemctl restart apache2
+```
+
+- Test load balancer via web browser using the LB's public IP address:
+
+```
+http://<Load-Balancer-Public-IP-Address-or-Public-DNS-Name>/index.php
+```
+
+- Open two SSH sessions—one for each Web Server—and unmount /var/log/httpd/ on both servers (if it is currently mounted).
+
+```
+df -h
+
+sudo systemctl stop httpd
+
+sudo umount /var/log/httpd
+
+sudo systemctl restart httpd
+
+sudo systemctl status httpd
+```
+
+- Run this command on each Web Server:
+
+```
+sudo tail -f /var/log/httpd/access_log
+```
+
+> Reload the load balancer page several times. Each refresh should generate new log entries on both web servers, and the request counts should be similar since both have identical load factors.
+
+---
+
+## Step 2: Configure IP-to-Domain Name Mapping
+
+- Open this file on your Load Balancer server:
+
+```
+sudo vi /etc/hosts
+```
+
+- Insert the following entries into the file to map each server’s IP address to an arbitrary hostname.
+
+```
+<WebServer1-Private-IP-Address> Web1
+<WebServer2-Private-IP-Address> Web2
+```
+
+- Update the load balancer configuration file to use these server names.
+
+```
+sudo vi /etc/apache2/sites-available/000-default.conf
+```
+
+- Use the arbitrary names in place of the IP addresses.
+
+```
+BalancerMember http://Web1:80 loadfactor=5 timeout=1
+BalancerMember http://Web2:80 loadfactor=5 timeout=1
+```
+
+- Test the configuration by using curl from the load balancer to access each web server.
+
+```
+curl http://Web1
+
+curl http://Web2
+```
+---
+
+### Congratulations! Your DevOps team now has a fully operational load-balanced web environment, enhancing performance and reliability.
