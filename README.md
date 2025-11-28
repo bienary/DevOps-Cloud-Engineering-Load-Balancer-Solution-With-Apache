@@ -157,4 +157,4 @@ curl http://Web2
 ```
 ---
 
-### Congratulations! Your DevOps team now has a fully operational load-balanced web environment, enhancing performance and reliability.
+### 🎉 Congratulations! Your DevOps team now has a fully operational load-balanced web environment 🌐, enhancing performance  and reliability ✅.
