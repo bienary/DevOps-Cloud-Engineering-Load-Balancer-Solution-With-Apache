@@ -119,11 +119,20 @@ sudo systemctl restart httpd
 sudo systemctl status httpd
 ```
 
+<img width="1313" height="694" alt="image" src="https://github.com/user-attachments/assets/eaa0c097-0ff3-4a70-a797-121f39116b3b" />
+
+
 - Run this command on each Web Server:
 
 ```
 sudo tail -f /var/log/httpd/access_log
 ```
+
+<img width="1312" height="293" alt="image" src="https://github.com/user-attachments/assets/b15c006b-7390-4850-a7dd-3d77521c0b36" />
+
+
+<img width="1319" height="489" alt="image" src="https://github.com/user-attachments/assets/87b1315f-e311-49b7-aa0c-30e4e300b0df" />
+
 
 > Reload the load balancer page several times. Each refresh should generate new log entries on both web servers, and the request counts should be similar since both have identical load factors.
 
