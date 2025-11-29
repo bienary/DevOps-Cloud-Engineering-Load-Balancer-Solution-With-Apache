@@ -153,6 +153,8 @@ sudo vi /etc/hosts
 <WebServer2-Private-IP-Address> Web2
 ```
 
+<img width="1319" height="489" alt="image" src="https://github.com/user-attachments/assets/ff96499e-a4eb-460a-8da9-817f8019c6c3" />
+
 - Update the load balancer configuration file to use these server names.
 
 ```
@@ -166,6 +168,9 @@ BalancerMember http://Web1:80 loadfactor=5 timeout=1
 BalancerMember http://Web2:80 loadfactor=5 timeout=1
 ```
 
+<img width="1319" height="489" alt="image" src="https://github.com/user-attachments/assets/0cb970d9-ad64-457b-aec5-ef0e68f540ad" />
+
+
 - Test the configuration by using curl from the load balancer to access each web server.
 
 ```
@@ -173,6 +178,9 @@ curl http://Web1
 
 curl http://Web2
 ```
+
+<img width="1296" height="690" alt="image" src="https://github.com/user-attachments/assets/26bc5dc3-e9d9-4aef-ac35-a03bcff2624e" />
+
 ---
 
 ### 🎉 Congratulations! Your DevOps team now has a fully operational load-balanced web environment 🌐, enhancing performance  and reliability ✅.
